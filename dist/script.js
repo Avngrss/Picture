@@ -332,6 +332,37 @@ const mask = selector => {
 
 /***/ }),
 
+/***/ "./src/js/modules/mobileMenu.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/mobileMenu.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const mobileMenu = (memuSelector, burgerSelector) => {
+  const menuElement = document.querySelector(memuSelector),
+    burgerElement = document.querySelector(burgerSelector);
+  menuElement.style.display = 'none';
+  burgerElement.addEventListener('click', () => {
+    if (menuElement.style.display === 'none' && window.screen.availWidth < 993) {
+      menuElement.style.display = 'block';
+    } else {
+      menuElement.style.display = 'none';
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.screen.availWidth > 992) {
+      menuElement.style.display = 'none';
+    }
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mobileMenu);
+
+/***/ }),
+
 /***/ "./src/js/modules/modals.js":
 /*!**********************************!*\
   !*** ./src/js/modules/modals.js ***!
@@ -692,6 +723,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
 /* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
 /* harmony import */ var _modules_accardions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accardions */ "./src/js/modules/accardions.js");
+/* harmony import */ var _modules_mobileMenu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/mobileMenu */ "./src/js/modules/mobileMenu.js");
+
 
 
 
@@ -718,6 +751,7 @@ window.addEventListener("DOMContentLoaded", () => {
   (0,_modules_pictureSize__WEBPACK_IMPORTED_MODULE_8__["default"])('.sizes-block');
   (0,_modules_accardions__WEBPACK_IMPORTED_MODULE_9__["default"])('.accordion-heading', '.accordion-block');
   // accardions('.accordion-heading')
+  (0,_modules_mobileMenu__WEBPACK_IMPORTED_MODULE_10__["default"])('.burger-menu', '.burger');
 });
 })();
 

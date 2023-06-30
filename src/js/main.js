@@ -8,6 +8,7 @@ import calc from "./modules/calc";
 import filter from "./modules/filter";
 import pictureSize from "./modules/pictureSize";
 import accardions from './modules/accardions';
+import mobileMenu from "./modules/mobileMenu";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -24,4 +25,5 @@ window.addEventListener("DOMContentLoaded", () => {
   pictureSize('.sizes-block');
   accardions('.accordion-heading', '.accordion-block')
   // accardions('.accordion-heading')
+  mobileMenu('.burger-menu', '.burger')
 });
