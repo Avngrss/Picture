@@ -7,23 +7,30 @@ import showMoreStyles from "./modules/showMoreStyles";
 import calc from "./modules/calc";
 import filter from "./modules/filter";
 import pictureSize from "./modules/pictureSize";
-import accardions from './modules/accardions';
+import accardions from "./modules/accardions";
 import mobileMenu from "./modules/mobileMenu";
+import scrolling from "./modules/scrolling";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
   modals();
-  sliders(".feedback-slider-item", "horizontal", ".main-prev-btn", ".main-next-btn");
+  sliders(
+    ".feedback-slider-item",
+    "horizontal",
+    ".main-prev-btn",
+    ".main-next-btn"
+  );
   sliders(".main-slider-item", "vertical");
   forms();
   mask('[name="phone"]');
   checkTextInput('[name="name"]');
   checkTextInput('[name="message"]');
   showMoreStyles(".button-styles", "#styles .row");
-  calc('#size', '#material', '#options', '.promocode', '.calc-price');
+  calc("#size", "#material", "#options", ".promocode", ".calc-price");
   filter();
-  pictureSize('.sizes-block');
-  accardions('.accordion-heading', '.accordion-block')
+  pictureSize(".sizes-block");
+  accardions(".accordion-heading", ".accordion-block");
   // accardions('.accordion-heading')
-  mobileMenu('.burger-menu', '.burger')
+  mobileMenu(".burger-menu", ".burger");
+  scrolling(".pageup");
 });
