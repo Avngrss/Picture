@@ -109,6 +109,64 @@ const checkTextInput = selector => {
 
 /***/ }),
 
+/***/ "./src/js/modules/drop.js":
+/*!********************************!*\
+  !*** ./src/js/modules/drop.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const drop = () => {
+  const fileInput = document.querySelectorAll('[name="upload"]');
+  ["dragenter", "dragleave", "dragover", "drop"].forEach(eventName => {
+    fileInput.forEach(input => {
+      input.addEventListener(eventName, preventDefaults, false);
+    });
+  });
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  function highLight(item) {
+    item.closest(".file_upload").style.border = "5px solid yellow";
+    item.closest(".file_upload").style.backgroundColor = "rgba(0,0,0, .7)";
+  }
+  function unHighLight(item) {
+    item.closest(".file_upload").style.border = "none";
+    if (item.closest(".calc_form")) {
+      item.closest(".file_upload").style.backgroundColor = "#fff";
+    } else {
+      item.closest(".file_upload").style.backgroundColor = "#ededed";
+    }
+  }
+  ["dragenter", "dragover"].forEach(eventName => {
+    fileInput.forEach(input => {
+      input.addEventListener(eventName, () => highLight(input), false);
+    });
+  });
+  ["dragleave", "drop"].forEach(eventName => {
+    fileInput.forEach(input => {
+      input.addEventListener(eventName, () => unHighLight(input), false);
+    });
+  });
+  fileInput.forEach(input => {
+    input.addEventListener("drop", e => {
+      input.files = e.dataTransfer.files;
+      let dots;
+      input.files[0].name.split(".")[0].lenght > 6 ? dots = "..." : dots = ".";
+      const name = input.files[0].name.split(".")[0].substring(0, 6) + dots + input.files[0].name.split(".")[1];
+      input.previousElementSibling.textContent = name;
+    });
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (drop);
+
+/***/ }),
+
 /***/ "./src/js/modules/filter.js":
 /*!**********************************!*\
   !*** ./src/js/modules/filter.js ***!
@@ -29761,6 +29819,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_accardions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accardions */ "./src/js/modules/accardions.js");
 /* harmony import */ var _modules_mobileMenu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/mobileMenu */ "./src/js/modules/mobileMenu.js");
 /* harmony import */ var _modules_scrolling__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/scrolling */ "./src/js/modules/scrolling.js");
+/* harmony import */ var _modules_drop__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/drop */ "./src/js/modules/drop.js");
+
 
 
 
@@ -29791,6 +29851,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // accardions('.accordion-heading')
   (0,_modules_mobileMenu__WEBPACK_IMPORTED_MODULE_10__["default"])(".burger-menu", ".burger");
   (0,_modules_scrolling__WEBPACK_IMPORTED_MODULE_11__["default"])(".pageup");
+  (0,_modules_drop__WEBPACK_IMPORTED_MODULE_12__["default"])();
 });
 })();
 

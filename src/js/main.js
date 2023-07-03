@@ -10,6 +10,7 @@ import pictureSize from "./modules/pictureSize";
 import accardions from "./modules/accardions";
 import mobileMenu from "./modules/mobileMenu";
 import scrolling from "./modules/scrolling";
+import drop from "./modules/drop";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -33,4 +34,5 @@ window.addEventListener("DOMContentLoaded", () => {
   // accardions('.accordion-heading')
   mobileMenu(".burger-menu", ".burger");
   scrolling(".pageup");
+  drop();
 });
